@@ -41,6 +41,58 @@ section {
     color: #fff;
 }
 
+.destination .destination-search {
+    max-width: 50rem;
+    margin: 0 auto 2.5rem;
+}
+
+.destination .destination-search__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.destination .destination-search__field {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    width: 100%;
+    border: 0.2rem solid #29d9d5;
+    border-radius: 5rem;
+    background: #10192a;
+    padding: 0 1.8rem 0 1.6rem;
+}
+
+.destination .destination-search__field i {
+    color: #29d9d5;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+}
+
+.destination .destination-search__input {
+    flex: 1 1 auto;
+    min-width: 0;
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 1.6rem;
+    color: #fff;
+    text-transform: none;
+    padding: 1.2rem 0;
+}
+
+.destination .destination-search__input::placeholder {
+    color: #aaa;
+    text-transform: none;
+}
+
 .btn {
     margin-top: 1rem;
     display: inline-block;
