@@ -5,6 +5,7 @@ let modal = null;
 let overlay = null;
 let currentDestination = "";
 let currentPrice = "";
+let currentPackageInr = null;
 
 // Function to create the modal HTML structure
 function createModal() {
@@ -110,10 +111,22 @@ function createModal() {
     closeConfirmBtn.addEventListener('click', closeModal);
 }
 
+function updateModalPriceDisplay() {
+    const el = document.getElementById('selected-price');
+    if (!el) return;
+    if (currentPackageInr != null && typeof window.formatTravellrrInr === 'function') {
+        const code = typeof window.getTravellrrCurrency === 'function' ? window.getTravellrrCurrency() : 'INR';
+        el.textContent = window.formatTravellrrInr(currentPackageInr, code);
+    } else {
+        el.textContent = currentPrice;
+    }
+}
+
 // Open modal function
-function openModal(destination, price) {
+function openModal(destination, price, packageInr) {
     currentDestination = destination;
     currentPrice = price;
+    currentPackageInr = (typeof packageInr === 'number' && !isNaN(packageInr)) ? packageInr : null;
     
     // Create modal if it doesn't exist
     if (!modal) {
@@ -122,7 +135,7 @@ function openModal(destination, price) {
     
     // Set destination and price
     document.getElementById('selected-destination').textContent = destination;
-    document.getElementById('selected-price').textContent = price;
+    updateModalPriceDisplay();
     
     // Show the modal and overlay
     modal.style.display = 'block';
@@ -219,6 +232,12 @@ function handleBookingSubmit() {
 
 // Initialize booking buttons
 document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('travellrr:currency', function() {
+        if (modal && overlay && overlay.style.display === 'flex') {
+            updateModalPriceDisplay();
+        }
+    });
+
     // Find all book now buttons
     const bookButtons = document.querySelectorAll('.btn');
     
@@ -232,11 +251,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Get destination and price from parent elements
                 const card = button.closest('.box');
                 const destination = card.querySelector('h3').textContent.trim().replace(/^\s*\S+\s+/, ''); // Remove icon
-                const priceElement = card.querySelector('.price');
-                const price = priceElement.textContent.split('₹')[1].split(' ')[0].trim();
+                const priceLine = card.querySelector('.price');
+                const firstWithInr = priceLine && priceLine.querySelector('[data-price-inr]');
+                let packageInr = null;
+                if (firstWithInr) {
+                    const raw = firstWithInr.getAttribute('data-price-inr');
+                    if (raw) {
+                        packageInr = parseFloat(String(raw).replace(/,/g, ''), 10);
+                        if (isNaN(packageInr)) packageInr = null;
+                    }
+                }
+                const displayText = firstWithInr ? firstWithInr.textContent.trim() : (priceLine ? priceLine.textContent.trim() : '');
                 
-                // Open booking modal
-                openModal(destination, '₹' + price);
+                openModal(destination, displayText, packageInr);
             });
         }
     });
