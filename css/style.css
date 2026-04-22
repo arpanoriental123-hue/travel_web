@@ -109,10 +109,18 @@ section {
 .header .header-currency-wrap {
     display: flex;
     align-items: center;
+    gap: 0.6rem;
+}
+
+.header .header-currency-label {
+    font-size: 1.2rem;
+    color: #aaa;
+    text-transform: none;
+    white-space: nowrap;
 }
 
 .header #header-currency {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: #e0e0e0;
     background: #1a2a3f;
     border: 0.1rem solid #29d9d5;
