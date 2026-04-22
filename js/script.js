@@ -1,16 +1,22 @@
-let navbar = document.querySelector('.header .navbar');
+const navbar = document.querySelector('.header .navbar');
+const menuBtn = document.querySelector('#menu-btn');
 
-document.querySelector('#menu-btn').onclick = () =>{
+if (menuBtn && navbar) {
+  menuBtn.onclick = () => {
     navbar.classList.toggle('active');
-}
+  };
 
-window.onscroll = () =>{
+  window.addEventListener('scroll', () => {
     navbar.classList.remove('active');
+  });
 }
 
-document.querySelectorAll('.about .video-container .controls .control-btn').forEach(btn => {
-    btn.onclick = () =>{
-        let src = btn.getAttribute('data-src');
-        document.querySelector('.about .video-container .video').src = src;
+document.querySelectorAll('.about .video-container .controls .control-btn').forEach((btn) => {
+  btn.onclick = () => {
+    const src = btn.getAttribute('data-src');
+    const video = document.querySelector('.about .video-container .video');
+    if (src && video) {
+      video.src = src;
     }
-})
+  };
+});
