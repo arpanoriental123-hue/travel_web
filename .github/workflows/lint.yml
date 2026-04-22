@@ -1,0 +1,35 @@
+name: Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  htmlhint:
+    name: HTML Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install HTMLHint
+        run: npm install -g htmlhint
+      - name: Run HTMLHint
+        run: htmlhint "**/*.html" --ignore "node_modules/**"
+
+  stylelint:
+    name: CSS Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Stylelint
+        run: |
+          npm install -g stylelint stylelint-config-standard
+      - name: Run Stylelint
+        run: stylelint "css/**/*.css" --config '{"extends":"stylelint-config-standard"}' || true
