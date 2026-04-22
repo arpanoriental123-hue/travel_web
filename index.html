@@ -14,6 +14,7 @@
 
     <!-- custom js file link  -->
     <script src="js/script.js" defer></script>
+    <script src="js/currency.js" defer></script>
 
 </head>
 <body>
@@ -33,7 +34,20 @@
         <a class="zoominleft" href="#gallery">gallery</a>
     </nav>
 
-    <a href="login.html" class="btn zoominleft">Plan your journey</a>
+    <div class="header-actions">
+        <div class="header-currency-wrap">
+            <label for="header-currency" class="visually-hidden">Currency</label>
+            <select id="header-currency" aria-label="Select currency" title="Currency">
+                <option value="INR">INR</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="AED">AED</option>
+                <option value="JPY">JPY</option>
+            </select>
+        </div>
+        <a href="login.html" class="btn zoominleft">Plan your journey</a>
+    </div>
 
 </header>
 
