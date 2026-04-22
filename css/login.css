@@ -25,7 +25,7 @@ body{
 
 .login-form{
     width: 360px;
-    background: #0e1727;
+    background: var(--color-login-form-bg);
     height: 380px;
     padding: 80px 40px;
     border-radius: 10px;
@@ -110,7 +110,7 @@ body{
   }
 
   .bottom-text a {
-      color: #29d9d5;
+      color: var(--color-accent);
   }
 
 #reg-formss {
@@ -119,7 +119,7 @@ body{
 
 .reg-form{
     width: 360px;
-    background: #10192a;
+    background: var(--color-surface);
     height: 530px;
     padding: 70px 40px;
     border-radius: 10px;

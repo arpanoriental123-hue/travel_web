@@ -1,5 +1,50 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
 
+:root,
+[data-theme="dark"] {
+    --color-page-bg: #436d70;
+    --color-accent: #29d9d5;
+    --color-surface: #10192a;
+    --color-text: #fff;
+    --color-text-muted: #aaa;
+    --color-border-subtle: #111;
+    --color-on-accent: #111;
+    --color-on-accent-invert: #fff;
+    --color-currency-fg: #e0e0e0;
+    --color-currency-bg: #1a2a3f;
+    --color-logo-icon: #29d9d5;
+    --color-review-text: rgb(196, 196, 196);
+    --color-navbar-mobile: #222;
+    --color-accent-rgb: 41, 217, 213;
+    --color-modal-header-fg: #10192a;
+    --color-modal-close-hover: #fff;
+    --color-login-form-bg: #0e1727;
+    --color-form-input-bg: #1c2a3a;
+    --color-booking-details-tint: rgba(41, 217, 213, 0.1);
+}
+
+[data-theme="light"] {
+    --color-page-bg: #e4f0ef;
+    --color-accent: #0f766e;
+    --color-surface: #f1f5f9;
+    --color-text: #0f172a;
+    --color-text-muted: #64748b;
+    --color-border-subtle: #cbd5e1;
+    --color-on-accent: #f8fafc;
+    --color-on-accent-invert: #0f172a;
+    --color-currency-fg: #0f172a;
+    --color-currency-bg: #fff;
+    --color-logo-icon: #0f766e;
+    --color-review-text: #475569;
+    --color-navbar-mobile: #e2e8f0;
+    --color-accent-rgb: 15, 118, 110;
+    --color-modal-header-fg: #f8fafc;
+    --color-modal-close-hover: #0f172a;
+    --color-login-form-bg: #f8fafc;
+    --color-form-input-bg: #fff;
+    --color-booking-details-tint: rgba(15, 118, 110, 0.12);
+}
+
 * {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -31,7 +76,7 @@ html {
 }
 
 body {
-    background: #436d70;
+    background: var(--color-page-bg);
     overflow-x: hidden;
 }
 
@@ -45,13 +90,13 @@ section {
 }
 
 .heading span {
-    color: #29d9d5;
+    color: var(--color-accent);
     font-size: 2rem;
 }
 
 .heading h1 {
     font-size: 4rem;
-    color: #fff;
+    color: var(--color-text);
 }
 
 .btn {
@@ -59,16 +104,16 @@ section {
     display: inline-block;
     padding: 1rem 3rem;
     font-size: 1.7rem;
-    color: #29d9d5;
-    border: 0.2rem solid #29d9d5;
+    color: var(--color-accent);
+    border: 0.2rem solid var(--color-accent);
     border-radius: 5rem;
     cursor: pointer;
     background: none;
 }
 
 .btn:hover {
-  background: #29d9d5;
-  color: #111;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
 }
 
 .header {
@@ -77,7 +122,7 @@ section {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: #10192a;
+    background: var(--color-surface);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -86,13 +131,13 @@ section {
 
 .header .navbar a {
     font-size: 1.7rem;
-    color: #aaa;
+    color: var(--color-text-muted);
     display: inline-block;
     margin: 0 1.5rem;
     }
 
 .header .navbar a:hover {
-    color: #29d9d5;
+    color: var(--color-accent);
 }
 
 .header .btn {
@@ -113,9 +158,9 @@ section {
 
 .header #header-currency {
     font-size: 1.3rem;
-    color: #e0e0e0;
-    background: #1a2a3f;
-    border: 0.1rem solid #29d9d5;
+    color: var(--color-currency-fg);
+    background: var(--color-currency-bg);
+    border: 0.1rem solid var(--color-accent);
     border-radius: 0.5rem;
     padding: 0.4rem 0.8rem;
     cursor: pointer;
@@ -124,26 +169,48 @@ section {
 }
 
 .header #header-currency:focus {
-    border-color: #29d9d5;
+    border-color: var(--color-accent);
     outline: none;
 }
 
 .logo {
     font-size: 2.5rem;
-    color: #fff;
+    color: var(--color-text);
     font-weight: bolder;
 }
 
 .logo i {
-    color: #29d9d5;
+    color: var(--color-logo-icon);
     padding-right: 0.5rem;
 }
 
 #menu-btn {
     font-size: 2.5rem;
-    color: #fff;
+    color: var(--color-text);
     cursor: pointer;
     display: none;
+}
+
+.header .theme-toggle {
+    font-size: 2rem;
+    color: var(--color-text);
+    background: transparent;
+    border: 0.1rem solid var(--color-accent);
+    width: 4.2rem;
+    height: 4.2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0;
+    text-transform: none;
+}
+
+.header .theme-toggle:hover {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
 }
 
 .home {
@@ -175,14 +242,14 @@ section {
 
 .home .content h3 {
     font-size: 6vw;
-    color: #fff;
+    color: var(--color-text);
 }
 
 .home .content p {
     max-width: 60rem;
     margin: 1rem auto;
     font-size: 2rem;
-    color: #aaa;
+    color: var(--color-text-muted);
     line-height: 1.8;
 }
 
@@ -219,7 +286,7 @@ section {
 }
 
 .about .video-container .controls span:hover {
-  background: #29d9d5;
+  background: var(--color-accent);
 }
 
 .about .content {
@@ -228,12 +295,12 @@ section {
 }
 
 .about .content span {
-  color: #29d9d5;
+  color: var(--color-accent);
   font-size: 2rem;
 }
 
 .about .content h3 {
-  color: #fff;
+  color: var(--color-text);
   font-size: 4rem;
   margin-top: .5rem;
 }
@@ -241,7 +308,7 @@ section {
 .about .content p {
   padding: 1rem 0;
   font-size: 1.4rem;
-  color: rgb(196, 196, 196);
+  color: var(--color-review-text);
   line-height: 2;
 }
 
@@ -262,7 +329,7 @@ section {
   border-radius: 1rem;
   width: 23%;
   overflow: hidden;
-  background: #10192a;
+  background: var(--color-surface);
 }
 
 .destination .box-container .box:hover img {
@@ -288,19 +355,19 @@ section {
 
 .destination .box-container .box .content h3 {
   font-size: 2rem;
-  color: #fff;
+  color: var(--color-text);
 }
 
 .destination .box-container .box .content p {
   padding: 1rem 0;
   font-size: 1.4rem;
-  color: #aaa;
+  color: var(--color-text-muted);
   line-height: 2;
 }
 
 .destination .box-container .box .content a {
   font-size: 1.7rem;
-  color: #29d9d5;
+  color: var(--color-accent);
 }
 
 .destination .box-container .box .content a:hover i {
@@ -326,33 +393,33 @@ section {
 
 .services .box-container .box {
     width: auto;
-    background: #10192a;
+    background: var(--color-surface);
     border-radius: 1rem;
     padding: 3rem;
     text-align: center;
-    border: 0.2rem solid #111;
+    border: 0.2rem solid var(--color-border-subtle);
     width: 31%;
 }
 
 .services .box-container .box:hover {
-  border: 0.2rem solid #29d9d5;
+  border: 0.2rem solid var(--color-accent);
 }
 
 .services .box-container .box i {
   font-size: 4rem;
-  color: #29d9d5;
+  color: var(--color-accent);
   margin-bottom: 2rem;
 }
 
 .services .box-container .box h3 {
   font-size: 2rem;
-  color: #fff;
+  color: var(--color-text);
 }
 
 .services .box-container .box p {
   padding: 1rem 0;
   font-size: 1.4rem;
-  color: #aaa;
+  color: var(--color-text-muted);
   line-height: 2;
 }
 
@@ -375,13 +442,13 @@ section {
 
 .gallery .box-container .box span {
   font-size: 1.4rem;
-  color: #aaa;
+  color: var(--color-text-muted);
 }
 
 .gallery .box-container .box h3 {
   margin-top: .5rem;
   font-size: 2rem;
-  color: #fff;
+  color: var(--color-text);
 }
 
 .review {
@@ -397,17 +464,17 @@ section {
 
 .review .content span {
   font-size: 2rem;
-  color: #29d9d5;
+  color: var(--color-accent);
 }
 
 .review .content h3 {
   font-size: 3rem;
-  color: #fff;
+  color: var(--color-text);
 }
 
 .review .content p {
   font-size: 1.4rem;
-  color: rgb(195, 195, 195);
+  color: var(--color-review-text);
   padding: 1rem 0;
   line-height: 2;
 }
@@ -423,19 +490,19 @@ section {
           flex: 1 1 20rem;
   border-radius: 1rem;
   padding: 2rem;
-  background: #10192a;
-  border: 0.2rem solid #111;
+  background: var(--color-surface);
+  border: 0.2rem solid var(--color-border-subtle);
 }
 
 .review .box-container .box:hover {
-  border: 0.2rem solid #29d9d5;
+  border: 0.2rem solid var(--color-accent);
 }
 
 .review .box-container .box p {
   font-size: 1.4rem;
   padding-bottom: 1rem;
   line-height: 2;
-  color: #aaa;
+  color: var(--color-text-muted);
 }
 
 .review .box-container .box .user {
@@ -452,11 +519,11 @@ section {
 
 .review .box-container .box .user h3 {
   font-size: 1.7rem;
-  color: #fff;
+  color: var(--color-text);
 }
 
 .review .box-container .box .user span {
-  color: #aaa;
+  color: var(--color-text-muted);
   font-size: 1.5rem;
 }
 
@@ -471,12 +538,12 @@ section {
 
 .banner .content span {
   font-size: 2rem;
-  color: #29d9d5;
+  color: var(--color-accent);
 }
 
 .banner .content h3 {
   font-size: 4rem;
-  color: #fff;
+  color: var(--color-text);
   margin-top: 1rem;
 }
 
@@ -484,14 +551,14 @@ section {
   max-width: 60rem;
   margin: 1rem auto;
   font-size: 1.4rem;
-  color: #aaa;
+  color: var(--color-text-muted);
   line-height: 2;
 }
 
 .footer {
   display: grid;
   gap: 1.5rem;
-  background-color: #10192a;
+  background-color: var(--color-surface);
 }
 .box-container {
     display: flex;
@@ -508,20 +575,20 @@ section {
 
 .footer .box-container .box h3 {
   font-size: 2.2rem;
-  color: #fff;
+  color: var(--color-text);
   padding: 1rem 0;
 }
 
 .footer .box-container .box p {
   font-size: 1.4rem;
-  color: #aaa;
+  color: var(--color-text-muted);
   padding: 1rem 0;
   line-height: 2;
 }
 
 .footer .box-container .box p i {
   padding-right: .5rem;
-  color: #29d9d5;
+  color: var(--color-accent);
 }
 
 .footer .box-container .box .share {
@@ -535,26 +602,26 @@ section {
   font-size: 2rem;
   border-radius: 50%;
   font-size: 1.7rem;
-  border: 0.2rem solid #29d9d5;
-  color: #29d9d5;
+  border: 0.2rem solid var(--color-accent);
+  color: var(--color-accent);
   margin-right: .5rem;
   text-align: center;
 }
 
 .footer .box-container .box .share a:hover {
-  background: #29d9d5;
-  color: #111;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
 }
 
 .footer .box-container .box .links {
   font-size: 1.4rem;
-  color: #aaa;
+  color: var(--color-text-muted);
   padding: 1rem 0;
   display: block;
 }
 
 .footer .box-container .box .links:hover {
-  color: #29d9d5;
+  color: var(--color-accent);
 }
 
 .footer .box-container .box .links:hover i {
@@ -563,17 +630,17 @@ section {
 
 .footer .box-container .box .links i {
   padding-right: .5rem;
-  color: #29d9d5;
+  color: var(--color-accent);
 }
 
 .footer .box-container .box form .email {
   width: 100%;
   border-radius: 5rem;
-  border: 0.2rem solid #29d9d5;
+  border: 0.2rem solid var(--color-accent);
   background: none;
   font-size: 1.5rem;
   text-transform: none;
-  color: #aaa;
+  color: var(--color-text-muted);
   margin-bottom: 1rem;
   padding: 1.2rem 1.4rem;
 }
@@ -602,7 +669,7 @@ section {
     top: 99%;
     left: 0;
     right: 0;
-    background: #222;
+    background: var(--color-navbar-mobile);
             clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   }
   .header .navbar.active {

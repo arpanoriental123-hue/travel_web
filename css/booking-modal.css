@@ -13,7 +13,7 @@
 }
 
 .booking-modal {
-    background-color: #10192a;
+    background-color: var(--color-surface);
     border-radius: 8px;
     width: 90%;
     max-width: 600px;
@@ -25,8 +25,8 @@
 }
 
 .modal-header {
-    background-color: #29d9d5;
-    color: #10192a;
+    background-color: var(--color-accent);
+    color: var(--color-modal-header-fg);
     padding: 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -44,12 +44,12 @@
     font-size: 3rem;
     font-weight: bold;
     cursor: pointer;
-    color: #10192a;
+    color: var(--color-modal-header-fg);
     transition: color 0.2s;
 }
 
 .close-modal:hover {
-    color: #fff;
+    color: var(--color-modal-close-hover);
 }
 
 .modal-body {
@@ -61,12 +61,12 @@
     margin-top: 0;
     margin-bottom: 2rem;
     font-size: 2rem;
-    color: #29d9d5;
+    color: var(--color-accent);
 }
 
 .price-tag {
     font-size: 1.8rem;
-    color: #fff;
+    color: var(--color-text);
     margin-bottom: 2.5rem;
 }
 
@@ -88,7 +88,7 @@
     display: block;
     margin-bottom: 0.5rem;
     font-size: 1.6rem;
-    color: #aaa;
+    color: var(--color-text-muted);
 }
 
 .form-group input,
@@ -96,17 +96,17 @@
     width: 100%;
     padding: 1rem;
     font-size: 1.6rem;
-    background-color: #1c2a3a;
-    border: 2px solid #29d9d5;
-    color: #fff;
+    background-color: var(--color-form-input-bg);
+    border: 2px solid var(--color-accent);
+    color: var(--color-text);
     border-radius: 5px;
 }
 
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
-    border-color: #29d9d5;
-    box-shadow: 0 0 0 2px rgba(41, 217, 213, 0.3);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px rgba(var(--color-accent-rgb), 0.3);
 }
 
 /* Date inputs styling */
@@ -137,7 +137,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .confirmation-icon {
     font-size: 8rem;
-    color: #29d9d5;
+    color: var(--color-accent);
     margin-bottom: 2rem;
     animation: pulse 1.5s infinite;
 }
@@ -145,7 +145,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .booking-confirmation p {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
-    color: #aaa;
+    color: var(--color-text-muted);
 }
 
 .booking-confirmation h3 {
@@ -154,12 +154,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .booking-details {
-    background-color: rgba(41, 217, 213, 0.1);
+    background-color: var(--color-booking-details-tint);
     padding: 1.5rem;
     border-radius: 5px;
     margin: 2rem 0;
     font-size: 1.6rem;
-    color: #fff;
+    color: var(--color-text);
     text-align: left;
 }
 
@@ -168,7 +168,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 #confirm-departure,
 #confirm-return, 
 #confirm-travelers {
-    color: #29d9d5;
+    color: var(--color-accent);
     font-weight: bold;
 }
 
