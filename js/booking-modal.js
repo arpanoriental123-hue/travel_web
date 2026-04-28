@@ -117,9 +117,17 @@ function updateModalPriceDisplay() {
     if (!el) return;
     if (currentPackageInr != null && typeof window.formatTravellrrInr === 'function') {
         const code = typeof window.getTravellrrCurrency === 'function' ? window.getTravellrrCurrency() : 'INR';
-        el.innerHTML = window.formatTravellrrInr(currentPackageInr, code) + ' <small class="raw-price">(' + currentRawPriceAttr + ')</small>';
+        el.textContent = window.formatTravellrrInr(currentPackageInr, code);
+        const small = document.createElement('small');
+        small.className = 'raw-price';
+        small.textContent = ' (' + currentRawPriceAttr + ')';
+        el.appendChild(small);
     } else {
-        el.innerHTML = currentPrice + ' <small class="raw-price">(' + currentRawPriceAttr + ')</small>';
+        el.textContent = currentPrice;
+        const small = document.createElement('small');
+        small.className = 'raw-price';
+        small.textContent = ' (' + currentRawPriceAttr + ')';
+        el.appendChild(small);
     }
 }
 
@@ -265,7 +273,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 const displayText = firstWithInr ? firstWithInr.textContent.trim() : (priceLine ? priceLine.textContent.trim() : '');
                 const rawPriceAttr = firstWithInr ? firstWithInr.getAttribute('data-price-inr') : '';
-                console.log("debug");
 
                 openModal(destination, displayText, packageInr, rawPriceAttr);
             });
