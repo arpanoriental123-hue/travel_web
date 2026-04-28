@@ -6,6 +6,7 @@ let overlay = null;
 let currentDestination = "";
 let currentPrice = "";
 let currentPackageInr = null;
+let currentRawPriceAttr = "";
 
 // Function to create the modal HTML structure
 function createModal() {
@@ -116,17 +117,18 @@ function updateModalPriceDisplay() {
     if (!el) return;
     if (currentPackageInr != null && typeof window.formatTravellrrInr === 'function') {
         const code = typeof window.getTravellrrCurrency === 'function' ? window.getTravellrrCurrency() : 'INR';
-        el.textContent = window.formatTravellrrInr(currentPackageInr, code);
+        el.innerHTML = window.formatTravellrrInr(currentPackageInr, code) + ' <small class="raw-price">(' + currentRawPriceAttr + ')</small>';
     } else {
-        el.textContent = currentPrice;
+        el.innerHTML = currentPrice + ' <small class="raw-price">(' + currentRawPriceAttr + ')</small>';
     }
 }
 
 // Open modal function
-function openModal(destination, price, packageInr) {
+function openModal(destination, price, packageInr, rawPriceAttr) {
     currentDestination = destination;
     currentPrice = price;
     currentPackageInr = (typeof packageInr === 'number' && !isNaN(packageInr)) ? packageInr : null;
+    currentRawPriceAttr = rawPriceAttr || "";
     
     // Create modal if it doesn't exist
     if (!modal) {
@@ -262,8 +264,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
                 const displayText = firstWithInr ? firstWithInr.textContent.trim() : (priceLine ? priceLine.textContent.trim() : '');
-                
-                openModal(destination, displayText, packageInr);
+                const rawPriceAttr = firstWithInr ? firstWithInr.getAttribute('data-price-inr') : '';
+                console.log("debug");
+
+                openModal(destination, displayText, packageInr, rawPriceAttr);
             });
         }
     });
